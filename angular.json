@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -90,9 +91,41 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "@myrmidon/ngx-dirty-check": {
+      "projectType": "library",
+      "root": "projects/myrmidon/ngx-dirty-check",
+      "sourceRoot": "projects/myrmidon/ngx-dirty-check/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/myrmidon/ngx-dirty-check/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/myrmidon/ngx-dirty-check/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/myrmidon/ngx-dirty-check/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/myrmidon/ngx-dirty-check/src/test.ts",
+            "tsConfig": "projects/myrmidon/ngx-dirty-check/tsconfig.spec.json",
+            "karmaConfig": "projects/myrmidon/ngx-dirty-check/karma.conf.js"
           }
         }
       }

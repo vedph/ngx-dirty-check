@@ -2,26 +2,45 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
 
-## Development server
+Angular dirty check helper. This was refactored from <https://netbasal.com/detect-unsaved-changes-in-angular-forms-75fd8f5f1fa6>.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Usage:
 
-## Code scaffolding
+(1) install: `npm i fast-deep-equal @myrmidon/ngx-dirty-check`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+(2) ensure you have `"allowSyntheticDefaultImports": true` in your `tsconfig.json`.
 
-## Build
+(3) create a store of some sort representing your form's data, where each control's value is keyed under its string key. The store can be anything being an `Observable<T>`, and is used only for the purpose of dirty checking.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+(4) let your component to be checked for dirty state implement `HasDirty` like this:
 
-## Running unit tests
+```ts
+export class SettingsComponent implements OnInit, OnDestroy, HasDirty {
+  private _sub?: Subscription;
+  public isDirty$: Observable<boolean>;
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  constructor(formBuilder: FormBuilder) {
+    // ... build your form ...
+    // the data store can be anything which is an Observable<V>
+    // where V is your form's value; here it's named store$
+    this.isDirty$ = dirtyCheck(this.form, YOUR_STORE);
+  }
 
-## Running end-to-end tests
+  ngOnInit(): void {
+    // be sure to unsubscribe to avoid leaks
+    // whenever the store emits, call form's patchValue to update the form's values
+    this._sub = store$.subscribe((state) => this.form.patchValue(state));
+  }
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  ngOnDestroy(): void {
+    this._sub?.unsubscribe();
+  }
 
-## Further help
+  submit() {
+    // TODO: update your store with form data, e.g.:
+    // store.next(this.form.value);
+  }
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+If your component gets its data from an input property binding, just update the store once it has been set (like in `submit`). This will update the form's controls.

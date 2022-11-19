@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div>
+    <mat-form-field>
+      <input matInput [formControl]="settingOne" placeholder="settingOne" />
+      <mat-error
+        *ngIf="
+          $any(settingOne).errors?.required &&
+          (settingOne.dirty || settingOne.touched)
+        "
+        >One required</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput [formControl]="settingTwo" placeholder="settingTwo" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-checkbox [formControl]="settingThree">three</mat-checkbox>
+  </div>
+  <div>
+    <button
+      type="submit"
+      mat-flat-button
+      color="primary"
+      [disabled]="form.invalid || form.pristine"
+    >
+      save
+    </button>
+  </div>
+</form>
