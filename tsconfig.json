@@ -3,7 +3,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@myrmidon/ngx-dirty-check": ["dist/myrmidon/ngx-dirty-check"]
+      "@myrmidon/ngx-dirty-check": [
+        "dist/myrmidon/ngx-dirty-check"
+      ]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
@@ -19,10 +21,14 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
+    "target": "ES2022",
     "module": "es2020",
-    "lib": ["es2020", "dom"],
-    "allowSyntheticDefaultImports": true
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

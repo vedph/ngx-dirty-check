@@ -47,4 +47,6 @@ If your component gets its data from an input property binding, just update the 
 
 ## History
 
-- 2023-03-07: updated peer dependencies to Angular 15.
+- 2023-03-07:
+  - updated to Angular 15.
+  - updated peer dependencies to Angular 15.
