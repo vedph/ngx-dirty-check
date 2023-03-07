@@ -44,3 +44,7 @@ export class SettingsComponent implements OnInit, OnDestroy, HasDirty {
 ```
 
 If your component gets its data from an input property binding, just update the store once it has been set (like in `submit`). This will update the form's controls.
+
+## History
+
+- 2023-03-07: updated peer dependencies to Angular 15.

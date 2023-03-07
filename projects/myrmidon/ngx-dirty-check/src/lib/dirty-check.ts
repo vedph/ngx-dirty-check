@@ -14,6 +14,7 @@ import {
   shareReplay,
   fromEvent,
   withLatestFrom,
+  tap,
 } from 'rxjs';
 
 // note: this requires "allowSyntheticDefaultImports": true
@@ -37,6 +38,11 @@ export function dirtyCheck<V>(control: AbstractControl, source: Observable<V>) {
   let isDirty = false;
 
   const isDirty$ = combineLatest([source, valueChanges$]).pipe(
+    tap(([a, b]) => {
+      console.log('DIRTY:');
+      console.log(JSON.stringify(a));
+      console.log(JSON.stringify(b));
+    }),
     map(([a, b]) => (isDirty = equal(a, b) === false)),
     finalize(() => subscription.unsubscribe()),
     startWith(false),
