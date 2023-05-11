@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanDeactivate,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { DialogService } from '@myrmidon/ng-mat-tools';
 import { map, Observable, of, switchMap, take, tap } from 'rxjs';
 
@@ -19,7 +14,7 @@ export interface HasDirty {
  * Dirty check guard.
  */
 @Injectable({ providedIn: 'root' })
-export class DirtyCheckGuard implements CanDeactivate<HasDirty> {
+export class DirtyCheckGuard  {
   constructor(private _dialogService: DialogService) {}
 
   canDeactivate(
