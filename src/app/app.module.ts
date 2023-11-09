@@ -3,17 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
-import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
-import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
+import { MatButtonModule as MatButtonModule } from '@angular/material/button';
+import { MatCardModule as MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule as MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule as MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
+import { MatFormFieldModule as MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
-import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
-import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
+import { MatInputModule as MatInputModule } from '@angular/material/input';
+import { MatSelectModule as MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule as MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule as MatTooltipModule } from '@angular/material/tooltip';
 
 import { NgMatToolsModule } from '@myrmidon/ng-mat-tools';
 
@@ -23,11 +23,7 @@ import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    SettingsComponent
-  ],
+  declarations: [AppComponent, HomeComponent, SettingsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -46,9 +42,9 @@ import { SettingsComponent } from './settings/settings.component';
     MatSnackBarModule,
     MatTooltipModule,
     // vendor
-    NgMatToolsModule
+    NgMatToolsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

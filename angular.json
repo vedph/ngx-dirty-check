@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngx-dirty-check:build:production"
+              "buildTarget": "ngx-dirty-check:build:production"
             },
             "development": {
-              "browserTarget": "ngx-dirty-check:build:development"
+              "buildTarget": "ngx-dirty-check:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-dirty-check:build"
+            "buildTarget": "ngx-dirty-check:build"
           }
         },
         "test": {
