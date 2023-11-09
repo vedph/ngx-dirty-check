@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { map, Observable, of, switchMap, take } from 'rxjs';
+
 import { DialogService } from '@myrmidon/ng-mat-tools';
-import { map, Observable, of, switchMap, take, tap } from 'rxjs';
 
 /**
  * Interface to be implemented by dirty-checked components.
